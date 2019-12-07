@@ -7,4 +7,5 @@
     <p><%= @shelter.zip %></p>
   </section>
   <%= link_to 'Edit', "/shelters/#{@shelter.id}/edit" %>
+  <%= button_to 'Delete', "/shelters/#{@shelter.id}", method: :delete %>
 </section>
