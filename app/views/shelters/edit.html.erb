@@ -1,0 +1,29 @@
+<section class="page-template-1" id="shelter-edit-page">
+  <section id=#current-shelter-details>
+    <h1><%= @shelter.title %></h1>
+    <p><%= @shelter.address %></p>
+    <p><%= @shelter.city %></p>
+    <p><%= @shelter.state %></p>
+    <p><%= @shelter.zip %></p>
+  </section>
+  <section>
+    <%= form_tag "/shelters/#{@shelter.id}", method: :patch do %>
+      <%= label_tag :title %>
+      <%= text_field_tag :title %>
+
+      <%= label_tag :address %>
+      <%= text_field_tag :address %>
+
+      <%= label_tag :city %>
+      <%= text_field_tag :city %>
+
+      <%= label_tag :state %>
+      <%= text_field_tag :state %>
+      
+      <%= label_tag :zip %>
+      <%= text_field_tag :zip %>
+
+      <%= submit_tag "Update"%>
+    <% end %>
+  </section>
+</section>

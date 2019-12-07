@@ -1,8 +1,12 @@
 <section class="page-template-1">
   <section class="content-template-1">
-    <%= @shelters.each do |shelter| %>
+    <% @shelters.each do |shelter| %>
       <article id="shelter-<%= shelter.id %>">
         <h2><%= shelter.title %></h2>
+        <h2><%= shelter.address %></h2>
+        <h2><%= shelter.city %></h2>
+        <h2><%= shelter.state %></h2>
+        <h2><%= shelter.zip %></h2>
       </article>
     <% end %>
   </section>
