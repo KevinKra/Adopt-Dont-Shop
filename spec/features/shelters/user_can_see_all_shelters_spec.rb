@@ -9,7 +9,15 @@ RSpec.describe "shelter index page" do
   it "displays all of the shelters" do
     visit "/shelters"
 
-    expect(page).to have_content(@shelter_1.title)
-    expect(page).to have_content(@shelter_2.title)
+    within("#shelter-#{@shelter_1.id}") do
+      expect(page).to have_content(@shelter_1.title)
+      expect(page).to_not have_content(@shelter_2.title)
+    end
+    
+    within("#shelter-#{@shelter_2.id}") do
+      expect(page).to have_content(@shelter_2.title)
+      expect(page).to_not have_content(@shelter_1.title)
+    end
+
   end
 end
