@@ -32,11 +32,12 @@ RSpec.describe "User can leave reviews for shelters" do
         sex: "male", 
         shelter: @shelter_1
     )
+  end
 
   it "should be able to leave a review for a shelter at shelter/:id" do
     visit "shelters/#{@shelter_1.id}"
 
-    click_link "Leave Review"
+    click_link "Write Review"
 
     expect(current_path).to eq("shelters/#{@shelter_1.id}/write_review")
 
@@ -48,7 +49,7 @@ RSpec.describe "User can leave reviews for shelters" do
     click_button "Submit"
 
     expect(current_path).to eq("shelters/#{@shelter_1.id}")
-    
+
     expect(page).to have_content("Great Experience")
     expect(page).to have_content("5/5")
     expect(page).to have_content("They were super friendly and really cared about their pets!")
