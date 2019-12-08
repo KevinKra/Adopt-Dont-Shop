@@ -44,9 +44,8 @@ RSpec.describe "Usability features for shelter's index page" do
   end
 
   it "should allow user to delete the shelter" do
-    expect(@shelter_1.pets.count).to eq(2)
-
     visit "/shelters"
+    expect(page).to have_content("BarkTown Dogs")
 
     within("#shelter-#{@shelter_1.id}") do
       click_link "Delete"
