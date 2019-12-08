@@ -4,9 +4,11 @@
       <article id="pet-<%= pet.id %>">
         <h2><%= pet.name %></h2>
         <img src="<%= pet.image %>">
+        <p><%= pet.description %></p>
         <p><%= pet.age %></p>
         <p><%= pet.sex %></p>
       </article>
     <% end %>
+    <%= link_to 'Add Pet', "/shelters/#{@shelter.id}/pets/new" %>
   </section>
 </section>
