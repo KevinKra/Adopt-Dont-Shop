@@ -55,4 +55,24 @@ RSpec.describe "Usability features for shelter's index page" do
 
     expect(page).to_not have_content("BarkTown Dogs")
   end
+
+  it "should allow user to visit the shelters index page from /pets" do
+    visit "/pets"
+
+    within("#pet-#{@pet_1.id}") do
+      click_link "#{@pet_1.shelter.title}"
+    end
+
+    expect(current_path).to eq("/shelters/#{@shelter_1.id}")
+  end
+
+  it "should allow user to visit the shelters index page from /pets/:id" do
+    visit "/pets/#{@pet_1.id}"
+
+    within("#pet-#{@pet_1.id}") do
+      click_link "#{@pet_1.shelter.title}"
+    end
+
+    expect(current_path).to eq("/shelters/#{@shelter_1.id}")
+  end
 end

@@ -75,24 +75,4 @@ RSpec.describe "Usability features for pets" do
 
     expect(current_path).to eq("/pets/#{@pet_1.id}")
   end
-
-  it "should allow user to visit the shelters index page from /pets" do
-    visit "/pets"
-
-    within("#pet-#{@pet_1.id}") do
-      click_link "#{@pet_1.shelter.title}"
-    end
-
-    expect(current_path).to eq("/shelters/#{@shelter_1.id}")
-  end
-
-  # it "should allow user to visit the shelters index page from /shelters/:id/shelters" do
-  #   visit "/shelters/#{@shelter_1.id}/shelters"
-
-  #   within("#pet-#{@pet_1.id}") do
-  #     click_link "#{@pet_1.name}"
-  #   end
-
-  #   expect(current_path).to eq("/shelters/#{@pet_1.id}")
-  # end
 end
