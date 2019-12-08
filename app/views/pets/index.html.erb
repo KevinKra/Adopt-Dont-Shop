@@ -1,0 +1,13 @@
+<section class="page-template-1">
+  <section class="pet-content">
+    <% @pets.each do |pet| %>
+      <article id="pet-<%= pet.id %>">
+        <h2><%= pet.name %></h2>
+        <img src=<%= pet.image %> />
+        <p><%= pet.age %></p>
+        <p><%= pet.sex %></p>
+        <p><%= pet.shelter.title %></p>
+      </article>
+    <% end %>
+  </section>
+</section>

@@ -1,0 +1,14 @@
+<section class="page-template-1">
+  <section class="pet-content">
+    <article id="pet-<%= @pet.id %>">
+      <h2><%= @pet.name %></h2>
+      <img src=<%= @pet.image %> />
+      <p><%= @pet.description %></p>
+      <p><%= @pet.age %></p>
+      <p><%= @pet.sex %></p>
+      <p><%= @pet.shelter.title %></p>
+    </article>
+    <%= link_to 'Edit', "/pets/#{@pet.id}/edit" %>
+    <%= link_to 'Delete', "/pets/#{@pet.id}", method: :delete %>
+  </section>
+</section>
