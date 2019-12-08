@@ -2,7 +2,7 @@
   <section class="content-template-1">
     <% @pets.each do |pet| %>
       <article id="pet-<%= pet.id %>">
-        <h2><%= pet.name %></h2>
+        <h2><%= link_to pet.name, "/pets/#{pet.id}" %></h2>
         <img src="<%= pet.image %>">
         <p><%= pet.description %></p>
         <p><%= pet.age %></p>

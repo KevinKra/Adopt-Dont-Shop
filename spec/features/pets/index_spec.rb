@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Usability features for pet's index page" do
+RSpec.describe "Usability features for pets" do
   before :each do
     @shelter_1 = Shelter.create(
         title: "BarkTown Dogs",
@@ -34,17 +34,17 @@ RSpec.describe "Usability features for pet's index page" do
     )
   end
 
-  it "should allow user to edit their pet" do
+  it "should allow user to edit their pet from index page" do
     visit "/pets"
 
     within("#pet-#{@pet_1.id}") do
       click_link "Edit"
     end
 
-    expect(current_path).to eq("/pets/#{@pet_1.id}")
+    expect(current_path).to eq("/pets/#{@pet_1.id}/edit")
   end
 
-  it "should allow user to delete their pet" do
+  it "should allow user to delete their pet from index page" do
     visit "/pets"
     expect(page).to have_content("Rufus")
 
@@ -55,4 +55,44 @@ RSpec.describe "Usability features for pet's index page" do
     expect(current_path).to eq("/pets")
     expect(page).to_not have_content("Rufus")
   end
+
+  it "should allow user to visit the pets index page from /pets" do
+    visit "/pets"
+
+    within("#pet-#{@pet_1.id}") do
+      click_link "#{@pet_1.name}"
+    end
+
+    expect(current_path).to eq("/pets/#{@pet_1.id}")
+  end
+
+  it "should allow user to visit the pets index page from /shelters/:id/pets" do
+    visit "/shelters/#{@shelter_1.id}/pets"
+
+    within("#pet-#{@pet_1.id}") do
+      click_link "#{@pet_1.name}"
+    end
+
+    expect(current_path).to eq("/pets/#{@pet_1.id}")
+  end
+
+  it "should allow user to visit the shelters index page from /pets" do
+    visit "/pets"
+
+    within("#pet-#{@pet_1.id}") do
+      click_link "#{@pet_1.shelter.title}"
+    end
+
+    expect(current_path).to eq("/shelters/#{@shelter_1.id}")
+  end
+
+  # it "should allow user to visit the shelters index page from /shelters/:id/shelters" do
+  #   visit "/shelters/#{@shelter_1.id}/shelters"
+
+  #   within("#pet-#{@pet_1.id}") do
+  #     click_link "#{@pet_1.name}"
+  #   end
+
+  #   expect(current_path).to eq("/shelters/#{@pet_1.id}")
+  # end
 end
