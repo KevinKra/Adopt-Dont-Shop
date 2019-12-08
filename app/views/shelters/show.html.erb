@@ -6,6 +6,7 @@
     <p><%= @shelter.state %></p>
     <p><%= @shelter.zip %></p>
   </section>
+  <%= link_to 'Write Review', "/shelters/#{@shelter.id}/write_review" %>
   <%= link_to 'View Pets', "/shelters/#{@shelter.id}/pets" %>
   <%= link_to 'Edit', "/shelters/#{@shelter.id}/edit" %>
   <%= button_to 'Delete', "/shelters/#{@shelter.id}", method: :delete %>
