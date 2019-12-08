@@ -75,4 +75,14 @@ RSpec.describe "Usability features for pets" do
 
     expect(current_path).to eq("/pets/#{@pet_1.id}")
   end
+
+  it "should allow me to visit the shelters index via navbar link" do
+    visit "/shelters"
+
+    within("#main-navbar") do
+      click_link "Shelters"
+    end
+
+    expect(current_path).to eq("/shelters")
+  end
 end
