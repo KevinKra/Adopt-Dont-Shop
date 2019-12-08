@@ -39,7 +39,7 @@ RSpec.describe "User can leave reviews for shelters" do
 
     click_link "Write Review"
 
-    expect(current_path).to eq("shelters/#{@shelter_1.id}/write_review")
+    expect(current_path).to eq("/shelters/#{@shelter_1.id}/write_review")
 
     fill_in "Title", with: "Great Experience"
     fill_in "Rating", with: 5
@@ -48,11 +48,13 @@ RSpec.describe "User can leave reviews for shelters" do
 
     click_button "Submit"
 
-    expect(current_path).to eq("shelters/#{@shelter_1.id}")
+    expect(current_path).to eq("/shelters/#{@shelter_1.id}")
 
-    expect(page).to have_content("Great Experience")
-    expect(page).to have_content("5/5")
-    expect(page).to have_content("They were super friendly and really cared about their pets!")
-    expect(page.find("img")["src"]).to match("myNewPup.jpg")
+    within("#shelter-#{@shelter_1.id}-reviews") do
+      expect(page).to have_content("Great Experience")
+      expect(page).to have_content("5/5")
+      expect(page).to have_content("They were super friendly and really cared about their pets!")
+      expect(page.find("img")["src"]).to match("myNewPup.jpg")
+    end
   end
 end
