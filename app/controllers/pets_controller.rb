@@ -12,7 +12,6 @@ class PetsController < ApplicationController
   end
 
   def create
-    # binding.pry
     shelter = Shelter.find(params[:shelter_id])
     shelter.pets.create(pet_params)
     redirect_to "/shelters/#{shelter.id}/pets"
@@ -27,6 +26,11 @@ class PetsController < ApplicationController
     pet.update(pet_params)
     pet.save
     redirect_to "/pets/#{pet.id}"
+  end
+
+  def destroy
+    Pet.destroy(params[:id])
+    redirect_to "/pets"
   end
 
   private
