@@ -6,7 +6,7 @@
       <p><%= @pet.description %></p>
       <p><%= @pet.age %></p>
       <p><%= @pet.sex %></p>
-      <p><%= @pet.shelter.title %></p>
+      <%= link_to @pet.shelter.title, "/shelters/#{@pet.shelter.id}" %>
     </article>
     <%= link_to 'Edit', "/pets/#{@pet.id}/edit" %>
     <%= link_to 'Delete', "/pets/#{@pet.id}", method: :delete %>
