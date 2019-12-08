@@ -4,9 +4,15 @@ class ShelterReviewsController < ApplicationController
   end
 
   def create
-    shelter = Shelter.find(params[:id])
-    shelter.shelterReviews.create(shelter_review_params)
-    redirect_to "/shelters/#{shelter.id}"
+    @shelter = Shelter.find(params[:id])
+    review = @shelter.shelterReviews.new(shelter_review_params)
+
+    if review.save
+      redirect_to "/shelters/#{@shelter.id}"
+    else
+      flash[:notice] = "Artist not created: Required information missing."
+      render :new
+    end
   end
 
   private

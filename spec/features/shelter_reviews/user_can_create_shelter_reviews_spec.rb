@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "User can leave reviews for shelters" do
+RSpec.describe "User can leave reviews for shelters." do
   before :each do
     @shelter_1 = Shelter.create(
         title: "BarkTown Dogs",
@@ -55,6 +55,26 @@ RSpec.describe "User can leave reviews for shelters" do
       expect(page).to have_content("5/5")
       expect(page).to have_content("They were super friendly and really cared about their pets!")
       expect(page.find("img")["src"]).to match("myNewPup.jpg")
+    end
+  end
+
+  it "should give me a warning if one or more fields are not entered" do
+    visit "shelters/#{@shelter_1.id}"
+
+    click_link "Write Review"
+
+    expect(current_path).to eq("/shelters/#{@shelter_1.id}/write_review")
+
+    fill_in "Title", with: "Great Experience"
+    fill_in "Rating", with: 5
+    fill_in "Photo", with: "myNewPup.jpg"
+
+    click_button "Submit"
+
+    expect(current_path).to eq("/shelters/#{@shelter_1.id}")
+
+    within("#flash-message") do
+      expect(page).to have_content("Artist not created: Required information missing.")
     end
   end
 end
