@@ -6,6 +6,18 @@
     <p><%= @shelter.state %></p>
     <p><%= @shelter.zip %></p>
   </section>
+  <section id="shelter-<%= @shelter.id %>-reviews">
+    <% @reviews.each do |review| %>
+      <article id="review-<%= review.id %>">
+        <h3><%= review.title %></h3>
+        <p><%= review.rating %>/5</p>
+        <p><%= review.review %></p>
+        <img src="<%= review.photo %>" />
+        <%= link_to 'Edit', "/shelters/#{@shelter.id}/reviews/#{review.id}/edit" %>
+      </article>
+    <% end %>
+  </section>
+  <%= link_to 'Write Review', "/shelters/#{@shelter.id}/write_review" %>
   <%= link_to 'View Pets', "/shelters/#{@shelter.id}/pets" %>
   <%= link_to 'Edit', "/shelters/#{@shelter.id}/edit" %>
   <%= button_to 'Delete', "/shelters/#{@shelter.id}", method: :delete %>

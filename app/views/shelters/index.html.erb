@@ -2,11 +2,11 @@
   <section class="content-template-1">
     <% @shelters.each do |shelter| %>
       <article id="shelter-<%= shelter.id %>">
-        <h2><%= shelter.title %></h2>
-        <h2><%= shelter.address %></h2>
-        <h2><%= shelter.city %></h2>
-        <h2><%= shelter.state %></h2>
-        <h2><%= shelter.zip %></h2>
+        <h2><%= link_to shelter.title, "/shelters/#{shelter.id}" %></h2>
+        <p><%= shelter.address %></p>
+        <p><%= shelter.city %></p>
+        <p><%= shelter.state %></p>
+        <p><%= shelter.zip %></p>
         <%= link_to 'Edit', "/shelters/#{shelter.id}/edit" %>
         <%= link_to 'Delete', "/shelters/#{shelter.id}", method: :delete %>
       </article>

@@ -1,0 +1,25 @@
+<section class="page-template-1">
+  <section class="content-template-1">
+    <h1><%= @review.title %></h1>
+    <p><%= @review.rating %>/5</p>
+    <p><%= @review.review %></p>
+    <p><%= @review.photo %></p>
+  </section>
+  <article id="review-<%= @review.id %>-edit">
+    <%= form_tag "/shelters/#{@shelter.id}/reviews/#{@review.id}", method: :patch do %>
+      <%= label_tag :title %>
+      <%= text_field_tag :title %>
+
+      <%= label_tag :rating %>
+      <%= text_field_tag :rating %>
+
+      <%= label_tag :review %>
+      <%= text_field_tag :review %>
+
+      <%= label_tag :photo %>
+      <%= text_field_tag :photo %>
+
+      <%= submit_tag "Update Review" %>
+    <% end %>
+  </article>
+</section>

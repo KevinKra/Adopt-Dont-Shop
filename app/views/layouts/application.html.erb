@@ -15,6 +15,9 @@
         <%= link_to 'Pets', "/pets" %>
         <%= link_to 'Shelters', "/shelters" %>
       </nav>
+      <% flash.each do |type, message| %>
+        <p id="flash-message"><%= message %></p>
+      <% end %>
     </header>
     <%= yield %>
   </body>

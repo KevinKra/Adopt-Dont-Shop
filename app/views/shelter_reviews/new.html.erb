@@ -1,0 +1,17 @@
+<section class="page-template-1">
+  <%= form_tag "/shelters/#{@shelter.id}" do %>
+    <%= label_tag :title %>
+    <%= text_field_tag :title %>
+
+    <%= label_tag :rating %>
+    <%= text_field_tag :rating %>
+
+    <%= label_tag :review %>
+    <%= text_field_tag :review %>
+
+    <%= label_tag :photo %>
+    <%= text_field_tag :photo %>
+
+    <%= submit_tag "Submit" %>
+  <% end %>
+</section>
