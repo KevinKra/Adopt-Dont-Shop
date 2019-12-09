@@ -4,14 +4,15 @@ Rails.application.routes.draw do
   get "/shelters/new", to: "shelters#new"
   get "/shelters/:id", to: "shelters#show"
   get "/shelters/:id/edit", to: "shelters#edit"
-
   post "/shelters", to: "shelters#create"
   patch "/shelters/:id", to: "shelters#update"
   delete "/shelters/:id", to: "shelters#destroy"
 
   # shelter-reviews
   get "/shelters/:shelter_id/write_review", to: "shelter_reviews#new"
+  get "/shelters/:shelter_id/reviews/:review_id/edit", to: "shelter_reviews#edit"
   post "/shelters/:id", to: "shelter_reviews#create"
+  patch "/shelters/:shelter_id/reviews/:review_id", to: "shelter_reviews#update"
 
   # shelter-pets
   get "/shelters/:shelter_id/pets", to: "shelters#index_pets"
