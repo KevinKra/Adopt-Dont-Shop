@@ -13,6 +13,7 @@
         <p><%= review.rating %>/5</p>
         <p><%= review.review %></p>
         <img src="<%= review.photo %>" />
+        <%= link_to 'Edit', "/shelters/#{@shelter.id}/reviews/#{review.id}/edit" %>
       </article>
     <% end %>
   </section>
